@@ -19,6 +19,7 @@ export class WebRequestService {
   }
 
   patch(uri: string, data: Object) {
+    console.log(data);
     return this.httpClient.patch(`${this.ROOT_URL}${uri}`, data);
   }
 

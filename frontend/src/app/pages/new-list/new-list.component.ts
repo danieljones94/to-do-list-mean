@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListService } from '../../list.service';
 import { Router } from '@angular/router';
-import { List } from 'src/app/models/list.model';
+import { List } from '../../../../src/app/models/list.model';
 
 @Component({
   selector: 'app-new-list',
