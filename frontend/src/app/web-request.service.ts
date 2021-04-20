@@ -19,11 +19,26 @@ export class WebRequestService {
   }
 
   patch(uri: string, data: Object) {
-    console.log(data);
     return this.httpClient.patch(`${this.ROOT_URL}${uri}`, data);
   }
 
   delete(uri: string) {
     return this.httpClient.delete(`${this.ROOT_URL}${uri}`);
+  }
+
+  login(email: string, password: string) {
+    return this.httpClient.post(
+      `${this.ROOT_URL}users/login`,
+      { email, password },
+      { observe: 'response' }
+    );
+  }
+
+  signup(email: string, password: string) {
+    return this.httpClient.post(
+      `${this.ROOT_URL}users`,
+      { email, password },
+      { observe: 'response' }
+    );
   }
 }

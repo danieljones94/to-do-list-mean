@@ -15,4 +15,12 @@ export class ListService {
   getLists() {
     return this.webReqService.get('lists');
   }
+
+  updateList(id: string, title: string) {
+    return this.webReqService.patch(`lists/${id}`, { title });
+  }
+
+  deleteList(id: string) {
+    return this.webReqService.delete(`lists/${id}`);
+  }
 }

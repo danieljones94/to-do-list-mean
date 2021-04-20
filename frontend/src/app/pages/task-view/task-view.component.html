@@ -18,19 +18,77 @@
       </button>
     </div>
     <div class="task-list-container has-background-light">
-      <h2 class="title">Tasks</h2>
-      <div
-        class="task"
-        *ngFor="let task of tasks"
-        (click)="onTaskClick(task)"
-        [ngClass]="{ complete: task.completed }"
-      >
-        <p>{{ task.title }}</p>
-      </div>
+      <div *ngIf="tasks">
+        <div class="top-bar">
+          <h2 class="title">Tasks</h2>
+          <div class="dropdown is-hoverable is-right">
+            <div class="dropdown-trigger">
+              <button
+                class="button"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu4"
+              >
+                <span class="icon is-small">
+                  <i class="fas fa-cog" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+              <div class="dropdown-content">
+                <a
+                  [routerLink]="['/edit-list', selectedListId]"
+                  class="dropdown-item"
+                >
+                  Edit
+                </a>
+                <a
+                  (click)="onDeleteListClick()"
+                  class="dropdown-item has-text-danger"
+                >
+                  Delete
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <button class="add-task-button button is-primary" routerLink="./new-task">
-        <img class="plus-icon" src="../../../assets/plus-icon.svg" />
-      </button>
+        <div class="task" *ngFor="let task of tasks">
+          <div
+            class="task-text"
+            (click)="onTaskClick(task)"
+            [ngClass]="{ complete: task.completed }"
+          >
+            <p>{{ task.title }}</p>
+          </div>
+          <div class="task-buttons">
+            <button
+              [routerLink]="['/lists', selectedListId, 'edit-task', task._id]"
+              id="edit-task"
+              class="button"
+            >
+              <div class="icon"><i class="fas fa-edit"></i></div>
+            </button>
+            <button
+              id="delete-task"
+              (click)="onDeleteTaskClick(task._id)"
+              class="button is-danger"
+            >
+              <div class="icon"><i class="fas fa-trash"></i></div>
+            </button>
+          </div>
+        </div>
+        <button
+          class="add-task-button button is-primary"
+          routerLink="./new-task"
+        >
+          <img class="plus-icon" src="../../../assets/plus-icon.svg" />
+        </button>
+      </div>
+      <div *ngIf="!tasks">
+        <h2 class="no-list is-4">
+          Please select a list from the sidebar to show tasks
+        </h2>
+      </div>
     </div>
   </div>
 </div>

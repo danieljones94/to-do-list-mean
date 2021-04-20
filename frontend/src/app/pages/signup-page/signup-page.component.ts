@@ -1,22 +1,21 @@
-import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss'],
+  selector: 'app-signup-page',
+  templateUrl: './signup-page.component.html',
+  styleUrls: ['./signup-page.component.scss'],
 })
-export class LoginPageComponent implements OnInit {
+export class SignupPageComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  onLoginButtonClicked(email: string, password: string) {
+  onSignUpButtonClicked(email: string, password: string) {
     this.authService
-      .login(email, password)
+      .signup(email, password)
       .subscribe((res: HttpResponse<any>) => {
         if (res.status === 200) {
           console.log(res);
