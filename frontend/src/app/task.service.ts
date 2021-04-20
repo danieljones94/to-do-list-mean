@@ -21,4 +21,12 @@ export class TaskService {
       completed: !task.completed,
     });
   }
+
+  updateTask(listId: string, id: string, title: string) {
+    return this.webReqService.patch(`lists/${listId}/tasks/${id}`, { title });
+  }
+
+  deleteTask(listId: string, id: string) {
+    return this.webReqService.delete(`lists/${listId}/tasks/${id}`);
+  }
 }

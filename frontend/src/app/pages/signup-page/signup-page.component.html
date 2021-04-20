@@ -1,6 +1,6 @@
 <div class="centered-content">
   <div class="form-box">
-    <h1 class="title has-text-dark">Login</h1>
+    <h1 class="title has-text-dark">Sign Up</h1>
     <div class="field">
       <p class="control has-icons-left has-icons-right">
         <input
@@ -31,9 +31,9 @@
       <p class="control">
         <button
           class="button is-primary has-text-white"
-          (click)="onLoginButtonClicked(emailInput.value, passwordInput.value)"
+          (click)="onSignUpButtonClicked(emailInput.value, passwordInput.value)"
         >
-          Login
+          Sign Up
         </button>
       </p>
     </div>
@@ -42,9 +42,9 @@
     <br />
     <br />
 
-    <div class="sign-up">
-      <p class="has-text-dark">Don't have an account?</p>
-      <a routerLink="/signup"> Sign up here...</a>
+    <div class="login">
+      <p class="has-text-dark">Already have an account?</p>
+      <a routerLink="/login"> Log in here...</a>
     </div>
   </div>
 </div>
